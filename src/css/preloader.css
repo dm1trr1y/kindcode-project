@@ -1,0 +1,83 @@
+:root {
+  --paw-color: #d31145;
+  --paw-size: 1em;
+  --paw-duration: 2050ms;
+  --paw-delay-step: 0.25s;
+}
+.paws-loader-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+.paws-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: rotate(90deg) translate(-50%, -50%);
+  font-size: 50px;
+}
+
+/* paw base */
+.paws-loader .paw {
+  width: var(--paw-size);
+  height: var(--paw-size);
+  opacity: 1;
+
+  animation: pawAnimation var(--paw-duration) ease-in-out infinite;
+}
+
+/* children */
+
+.paws-loader .paw .paw-icon {
+  color: var(--paw-color);
+  width: var(--paw-size);
+  height: var(--paw-size);
+}
+
+/* odd / even */
+.paws-loader .paw:nth-child(odd) {
+  transform: rotate(-10deg);
+}
+
+.paws-loader .paw:nth-child(even) {
+  transform: rotate(10deg) translate(125%, 0);
+}
+
+/* animation delays */
+.paws-loader .paw:nth-child(1) {
+  animation-delay: calc(var(--paw-delay-step) * 5);
+}
+.paws-loader .paw:nth-child(2) {
+  animation-delay: calc(var(--paw-delay-step) * 4);
+}
+.paws-loader .paw:nth-child(3) {
+  animation-delay: calc(var(--paw-delay-step) * 3);
+}
+.paws-loader .paw:nth-child(4) {
+  animation-delay: calc(var(--paw-delay-step) * 2);
+}
+.paws-loader .paw:nth-child(5) {
+  animation-delay: var(--paw-delay-step);
+}
+.paws-loader .paw:nth-child(6) {
+  animation-delay: 0s;
+}
+
+/* fallback */
+.no-cssanimations .paws-loader .paw {
+  opacity: 1;
+}
+
+/* animation */
+@keyframes pawAnimation {
+  0% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
