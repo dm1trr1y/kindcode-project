@@ -1,0 +1,144 @@
+.pet-title {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--color-scheme-1-text);
+    margin-bottom: 16px;
+
+}
+
+.pet-sub-title {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: var(--color-scheme-1-text);
+    margin-bottom: 32px;
+}
+
+.pet-filter-list {
+    margin-bottom: 32px;
+}
+
+.pet-filter-btn {
+    display: inline-block;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    color: var(--color-scheme-1-text);
+
+    border: 1px solid var(--opacity-transparent);
+    border-radius: 100px;
+    padding: 10px 16px;
+    width: 53px;
+    height: 41px;
+    background: var(--color-scheme-1-foreground);
+
+}
+
+.pet-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.pet-item-container {
+    border-radius: 16px;
+    padding: 12px;
+    width: 335px;
+    background: var(--color-scheme-1-foreground);
+}
+
+.pet-img {
+    border-radius: 8px;
+    background-color: turquoise;
+    width: 100%;
+    height: 245px;
+    margin-bottom: 16px;
+}
+
+.pet-species {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    color: var(--color-scheme-1-text);
+    margin-bottom: 4px;
+}
+
+.pet-name-container {}
+
+.pet-name {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    color: var(--color-scheme-1-text);
+    margin-bottom: 4px;
+}
+
+.pet-tags {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 150%;
+    color: var(--color-neutral-darkest);
+
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--opacity-transparent);
+    border-radius: 100px;
+    background: var(--opacity-neutral-darkest-5);
+
+}
+
+.pet-tags:last-child {
+    margin-bottom: 10px;
+}
+
+.pet-info-container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    ;
+}
+
+.pet-age {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    color: var(--color-scheme-1-text);
+}
+
+.pet-sex {
+
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    color: var(--color-scheme-1-text);
+}
+
+.pet-desc {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: var(--color-scheme-1-text);
+    margin-bottom: 16px;
+}
+
+.btn-more {
+    border: 1px solid var(--color-neutral-darkest);
+    border-radius: 8px;
+    padding: 8px 20px;
+    width: 311px;
+    height: 40px;
+    background-color: transparent;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: var(--color-neutral-darkest);
+}
