@@ -1,0 +1,109 @@
+.header-container {
+    padding: 0px 12px 0px 20px;
+    max-width: 375px;
+    height: 64px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+}
+
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+}
+
+.laptop-nav-group {
+    display:none;
+}
+.link-header {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-scheme-1-text);
+
+}
+
+.laptop-button {
+        display: flex;
+        align-items: center;
+        border: 1px solid #88765c;
+        border-radius: 8px;
+        padding: 8px 20px;
+        width: 130px;
+        height: 40px;
+        background-color: #88765c;
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: var(--color-white);
+}
+
+ .link-header:hover,
+ .link-header:focus  {
+    border-bottom: 1px solid var(--color-mariner-darker);
+}
+
+ .laptop-button:hover,
+ .laptop-button:focus  {
+    border: 1px solid var(--color-neutral-darkest);
+    background: var(--color-mariner-light);
+}
+
+@media screen and (min-width: 768px) {
+    .header-container {
+        padding: 0px 32px;
+        max-width: 768px;
+        height: 64px;
+    }
+
+
+}
+
+@media screen and (min-width: 1440px) {
+    .header-container {
+        padding: 0px 64px;
+        max-width: 1440px;
+        justify-content: flex-start;
+    }
+    .header-menu {
+        display: none;
+    }
+    .laptop-nav-group {
+        display: flex;
+        max-width: 1440px;
+        height: 72px;
+        align-items: center;
+        margin-left: 24px;
+        flex: 1;
+    }
+    .link-header {
+        display: flex;
+    }
+
+
+    .site-navigation {
+        display: flex;
+        width: 477px;
+        height: 24px;
+        justify-content: space-between;
+    }
+    .laptop-button {
+        margin-left: auto;
+    }
+
+}
