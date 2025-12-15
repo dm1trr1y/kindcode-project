@@ -1,4 +1,6 @@
 import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -30,23 +32,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Створення карток
   const renderFeedbacks = feedbacks => {
     wrapper.innerHTML = '';
-    feedbacks.forEach(({ rating, text, user }) => {
+    feedbacks.forEach(({ rate, description, author }) => {
       const slide = document.createElement('div');
       slide.className = 'swiper-slide';
       slide.innerHTML = `
         <article class="feedback-card">
-          <div class="feedback-card__rating"></div>
-          <p class="feedback-card__text">${text}</p>
-          <span class="feedback-card__author">${user}</span>
+          <div class="feedback-card__rating">
+          <div class="star-rating star-rating--medium" data-rating="${rate}"></div>
+        </div>
+          <p class="feedback-card__text">${description}</p>
+          <span class="feedback-card__author">${author}</span>
         </article>`;
       wrapper.appendChild(slide);
-      renderRating(slide.querySelector('.feedback-card__rating'), rating);
+      renderRating(slide.querySelector('.feedback-card__rating'), rate);
     });
   };
 
   // Ініціалізація Swiper
   const initSwiper = () => {
     new Swiper('.success-stories__slider', {
+      modules: [Navigation, Pagination],
       slidesPerView: 1,
       spaceBetween: 24,
       navigation: {
@@ -77,9 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const res = await fetch(API_URL);
       if (!res.ok) throw new Error('Помилка завантаження відгуків');
       const data = await res.json();
-      if (!data.length || data.length < 3)
+
+      const feedbacks = data.feedbacks;
+
+      if (!feedbacks.length || feedbacks.length < 3)
         throw new Error('Недостатньо відгуків');
-      renderFeedbacks(data);
+      renderFeedbacks(feedbacks);
       initSwiper();
     } catch (err) {
       showToast(err.message);
