@@ -1,0 +1,76 @@
+.d-m-content {
+    border-radius: 8px;
+    padding: 64px 20px;
+    width: 335px;
+    height: 1012px;
+    background: #dddfe7;
+    position: relative;
+}
+
+.d-m-svg {
+    fill: var(--color-white);
+        stroke-width: 1px;
+        stroke: var(--color-scheme-1-text);
+}
+
+.d-m-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.d-m-img {
+    width: 295px;
+    height: 295px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 32px;
+}
+
+.d-m-species {
+    margin-bottom: 8px;
+}
+
+.d-m-name {
+    margin-bottom: 8px;
+}
+
+.d-m-gender {
+    margin-bottom: 24px;
+}
+
+.d-m-title {
+    margin-bottom: 8px;
+}
+.d-m-description {
+    margin-bottom: 24px;
+}
+
+.d-m-title {
+    margin-bottom: 8px;
+}
+
+.d-m-health {
+    margin-bottom: 24px;
+}
+.d-m-title {
+    margin-bottom: 8px;
+}
+
+.d-m-behavior {
+    margin-bottom: 24px;
+}
+
+.d-m-submit {
+    margin-bottom: 64px;
+}
+
+.details-modal{
+display: none;
+}
