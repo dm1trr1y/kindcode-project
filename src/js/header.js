@@ -1,8 +1,7 @@
 const openBt = document.querySelector('#menu-button-open');
 const closeBt= document.querySelector('#mobile-button-close');
-const menu = document.querySelector('.mobile-menu');
+const menu = document.querySelector('.mobile-container');
 const mobileList = document.querySelector('.mobile-group');
-const mobileup = document.querySelector('.mobile-up');
 
 document.addEventListener('keydown', thisOpen);
 
