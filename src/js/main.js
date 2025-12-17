@@ -1,2 +1,2 @@
 import './preloader.js';
-import {} from './pets-list/pets-render';
+import {} from './pets-list/pets-index';
