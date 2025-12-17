@@ -1,44 +1,83 @@
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
 .success-stories {
   padding: 80px 0;
-  background-color: #f9f9f9;
+  background-color: #f6f4f1;
   position: relative;
 }
 
 .success-stories__title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 12px;
+  color: #02060a;
+  margin-bottom: 24px;
 }
 
 .success-stories__subtitle {
-  max-width: 520px;
-  margin: 0 auto 40px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
   text-align: center;
-  color: #666;
+  color: #02060a;
+  margin-bottom: 40px;
 }
 
+/* Картки відгуків */
+
 .feedback-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
 }
 
 .feedback-card__rating {
-  margin-bottom: 12px;
+  display: flex;
+  max-width: 116px;
+  max-height: 19px;
+  justify-content: flex-start;
+  margin-bottom: 32px;
+}
+
+.star-rating {
+  display: flex !important;
+  gap: 4px;
 }
 
 .feedback-card__text {
-  margin-bottom: 16px;
-  font-size: 14px;
+  margin-bottom: 32px;
+
+  font-weight: 400;
+  font-size: 18px;
   line-height: 1.5;
+  color: #02060a;
 }
 
 .feedback-card__author {
   font-weight: 600;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #02060a;
 }
 
-/* Swiper кнопки */
+/* Swiper слайдер */
+
+.success-stories__slider {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.swiper-buttons-group {
+  position: absolute;
+  bottom: 64px;
+  right: 64px;
+  display: flex;
+  gap: 16px;
+  z-index: 10;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
   border: 1px solid #c3b49d;
@@ -47,8 +86,11 @@
   width: 48px;
   height: 48px;
   background: #eee9e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.3s, background 0.2s;
 }
 
 .swiper-button-prev:hover,
@@ -62,7 +104,17 @@
   cursor: not-allowed;
 }
 
-/* Swiper пагінація */
+/* Пагінація Swiper */
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
 .swiper-pagination-bullet {
   background: #ccc;
   opacity: 1;
@@ -73,7 +125,8 @@
   background: #000;
 }
 
-/* Ajax Loader */
+/* Лоадер */
+
 .ajax-loader {
   position: absolute;
   top: 25%;
@@ -142,6 +195,7 @@
 }
 
 /* Тости */
+
 #toast-container {
   position: fixed;
   top: 20px;
@@ -158,18 +212,32 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-@media (min-width: 375px) {
-  .container {
-    padding: 0 16px;
+/* Адаптив */
+
+/* Планшети (768px — 1439px) */
+@media (min-width: 768px) and (max-width: 1439px) {
+  .success-stories__subtitle {
+    font-size: 14px;
+  }
+  .feedback-card {
+    padding: 20px;
   }
 }
-@media (min-width: 768px) {
-  .success-stories__title {
-    font-size: 28px;
-  }
-}
+
+/* Десктопи (1440px і більше) */
 @media (min-width: 1440px) {
   .success-stories__title {
-    font-size: 32px;
+    font-size: 48px;
+  }
+  .success-stories__subtitle {
+    font-size: 18px;
+  }
+
+  .feedback-card__text {
+    font-size: 20px;
+  }
+
+  .feedback-card__author {
+    font-size: 16px;
   }
 }

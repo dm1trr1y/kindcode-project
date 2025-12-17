@@ -1,5 +1,6 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+import Raty from 'raty-js';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -23,12 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => toast.remove(), 4000);
   };
 
-  // Рейтинг зірочками
-  const renderRating = (container, rating) => {
-    const percent = (rating / 5) * 100;
-    container.innerHTML = `<div class="star-rating"><span style="width:${percent}%"></span></div>`;
-  };
-
   // Створення карток
   const renderFeedbacks = feedbacks => {
     wrapper.innerHTML = '';
@@ -38,13 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
       slide.innerHTML = `
         <article class="feedback-card">
           <div class="feedback-card__rating">
-          <div class="star-rating star-rating--medium" data-rating="${rate}"></div>
+          <div class="star-rating star-rating--medium" data-score="${rate}"></div>
         </div>
           <p class="feedback-card__text">${description}</p>
           <span class="feedback-card__author">${author}</span>
         </article>`;
       wrapper.appendChild(slide);
-      renderRating(slide.querySelector('.feedback-card__rating'), rate);
+      // renderRating(slide.querySelector('.feedback-card__rating'), rate);
+    });
+    const raty = document.querySelectorAll('.star-rating').forEach(box => {
+      const ratyBox = new Raty(box, {
+        readOnly: true,
+        path: './img',
+        starHalf: 'star-half.png',
+        starOn: 'star-filled.png',
+        starOff: 'star-outline.png',
+        numberMax: 5,
+      });
+      ratyBox.init();
     });
   };
 
