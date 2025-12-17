@@ -37,9 +37,25 @@
 
     display: inline-block;
     padding: 10px 16px;
+    border: none;
+    background-color: transparent;
+
+}
+
+.pet-category-btn.active {
     border-radius: 100px;
     border: 1px solid var(--opacity-transparent);
     background: var(--color-scheme-1-foreground);
+}
+
+.pet-category-btn:hover {
+    background: rgb(85, 146, 146);
+
+}
+
+.pet-category-btn:active {
+    background: rgb(161, 255, 255);
+
 }
 
 .pet-list {

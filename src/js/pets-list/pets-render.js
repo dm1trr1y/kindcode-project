@@ -17,7 +17,7 @@ function filterTemplate({ _id, name }) {
 
 export function createCategoriesList(data) {
   const markup = data.map(filterTemplate).join('');
-  categories.innerHTML = markup;
+  categories.insertAdjacentHTML('beforeend', markup);
   return markup;
 }
 
@@ -79,8 +79,8 @@ export function clearPetList() {
 // "При відкритті сторінки додатку повинні відображатись кнопки з фільтрами по категоріям отримані з БД  за допомогою запиту наданого в завданні API, маршрут - /api/categories.
 // Кнопка Всі активна за замовчуванням, клік по даній кнопці виконує запит за тваринами всіх категорій."
 
-//: яким чином виконує запит?
-// варіанти: listener на обновлення сторінки
+//; яким чином виконує запит?
+//; варіанти: listener на обновлення сторінки
 
 // "При відкритті сторінки додатку за замовчуванням повинно відображатись:
 // -9 карток з тваринами - на десктопі,
