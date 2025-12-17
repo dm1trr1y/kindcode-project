@@ -162,6 +162,10 @@
   pointer-events: auto;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
  .mobile-close {
     display: flex;
     align-items: center;
@@ -224,6 +228,8 @@
     box-shadow 300ms ease;
     cursor: pointer;
 }
+
+
 
 @media screen and (min-width: 768px) {
 

@@ -2,6 +2,7 @@ const openBt = document.querySelector('#menu-button-open');
 const closeBt= document.querySelector('#mobile-button-close');
 const menu = document.querySelector('.mobile-container');
 const mobileList = document.querySelector('.mobile-group');
+const body = document.body;
 
 document.addEventListener('keydown', thisOpen);
 
@@ -11,10 +12,12 @@ closeBt.addEventListener('click', closeMobileMenu);
 
 function openMobileMenu() {
     menu.classList.add('is-open');
+    body.classList.add('no-scroll');
 }
 
 function closeMobileMenu() {
     menu.classList.remove('is-open');
+    body.classList.remove('no-scroll');
 }
 
 mobileList.querySelectorAll('a').forEach(link => {
