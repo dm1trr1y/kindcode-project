@@ -1,0 +1,1 @@
+import './details-modal.js/details-mod.js';
