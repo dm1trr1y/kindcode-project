@@ -36,5 +36,23 @@ menu.addEventListener('click', function (event) {
 });
 
 
+mobileLinks.forEach(link => {
+  link.addEventListener('click', handleMobileLinkClick);
+});
 
+function handleMobileLinkClick(event) {
+  event.preventDefault();
+
+  const id = event.currentTarget.getAttribute('href');
+  const target = document.querySelector(id);
+
+  if (!target) return;
+
+  closeMobileMenu();
+
+  target.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+}
 
