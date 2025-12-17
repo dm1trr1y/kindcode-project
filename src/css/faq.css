@@ -1,50 +1,52 @@
-
 #faq {
-    padding: 24px 0;
+  padding: 24px 0;
 }
 
 ol {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .faq-title {
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    text-align: center;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
 }
 
 .accordion-container {
-    padding: 40px 20px 64px 20px;
+  padding: 40px 20px 64px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ac {
-    border: 0px solid rgb(238,233,227);
-    border-radius: 8px;
-    background: rgb(238,233,227);
-    margin: 0 auto;
+.faq-accordion .ac {
+  border: 0px solid rgb(238, 233, 227);
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: var(--color-scheme-1-foreground);
 }
 
 .ac-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 24px;
-    cursor: pointer;
-    margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  cursor: pointer;
+  margin: 0;
 }
 
 .ac-item-header span {
-    max-width: 239px;
+  max-width: 239px;
 }
 
 .ac-item-header span {
-     font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.5;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .ac-item-icon {
@@ -52,22 +54,22 @@ ol {
 }
 
 .ac-item-list {
-    padding-left: 20px;
-    margin-top: 10px;   
+  padding-left: 20px;
+  margin-top: 10px;
+  list-style: disc;
 }
 
 .ac-item-list li {
-    margin-top: 10px;  
+  margin-top: 10px;
 }
 
 .ac-panel {
-    font-family: "IBM Plex Sans", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.5;
-    padding: 0 24px;
-
-    transition: max-height 0.4s ease, padding 0.4s ease;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 0 24px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
 .icon-close {
@@ -75,49 +77,49 @@ ol {
 }
 
 .ac.is-active .ac-panel {
-    padding-bottom: 24px;
+  padding-bottom: 24px;
 }
 
 .ac.is-active .icon-active {
-  display: none;  
+  display: none;
 }
 
 .ac.is-active .icon-close {
-  display: block;  
+  display: block;
 }
 
 @media only screen and (min-width: 768px) {
-    .accordion-container {
-        padding: 80px 32px 64px 32px;
-    }   
+  .accordion-container {
+    padding: 80px 32px 64px 32px;
+  }
 
-    .ac-item-header span {
-        max-width: 608px;
-    }
+  .ac-item-header span {
+    max-width: 608px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .faq-title {
-        font-size: 48px;
-    }
+  .faq-title {
+    font-size: 48px;
+  }
 
-    .accordion-container {
-        padding: 80px 224px 80px 224px;
-    }
+  .accordion-container {
+    padding: 80px 224px 80px 224px;
+  }
 
-    .ac {
-        max-width: 864px;
-    }
+  .ac {
+    max-width: 864px;
+  }
 
-    .ac-item-header {
-        font-size: 18px;
-    }
+  .ac-item-header {
+    font-size: 18px;
+  }
 
-    .ac-panel {
-        font-size: 16px;
-    }
+  .ac-panel {
+    font-size: 16px;
+  }
 
-    .ac-item-header span {
-        max-width: 768px;
-    }
+  .ac-item-header span {
+    max-width: 768px;
+  }
 }
