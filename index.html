@@ -25,7 +25,7 @@
     <script type="module" crossorigin src="/kindcode-project/index.js"></script>
     <link rel="modulepreload" crossorigin href="/kindcode-project/assets/vendor-DAakc0ZW.js">
     <link rel="stylesheet" crossorigin href="/kindcode-project/assets/vendor-CuB_KrR_.css">
-    <link rel="stylesheet" crossorigin href="/kindcode-project/assets/index-DzvDy1HO.css">
+    <link rel="stylesheet" crossorigin href="/kindcode-project/assets/index-PhFka5i1.css">
   </head>
   <body>
     <div class="paws-loader-box js-preloader">
@@ -412,9 +412,64 @@
   
 </div>
 
-      <div class="order-modal">
-  <!-- Vera`s section -->
-  <h2>This is Order Modal</h2>
+      <div class="adopt-modal is-open">
+  <div class="order-modal">
+    <!-- Button -->
+    <button class="order-close-modal-btn" type="button">
+      <svg class="close" width="24" height="24">
+        <use href="/kindcode-project/assets/icon-sprite-COuxaacX.svg#close"></use>
+      </svg>
+    </button>
+    <!-- Paragraph -->
+    <h2 class="order-modal-title">Залишіть заявку на знайомство</h2>
+    <!-- Form -->
+    <form class="order-form" name="order-form-section" autocomplete="off">
+      <!-- Name -->
+      <div class="order-container-inputs">
+        <label class="order-form-label" for="order-user-name">Ім’я*</label>
+        <input
+          type="text"
+          class="order-user-name"
+          id="order-user-name"
+          name="order-user-name"
+          placeholder="Андрій"
+          required
+          maxlength="32"
+        />
+      </div>
+      <!-- Phone -->
+      <div class="order-container-inputs">
+        <label class="order-form-label" for="order-user-phone">Телефон*</label>
+        <input
+          type="tel"
+          class="order-user-name"
+          id="order-user-phone"
+          name="order-user-phone"
+          placeholder="+38 (095) 555 99 22"
+          required
+          inputmode="numeric"
+          pattern="^[0-9]{12}$"
+          title="Введіть 12 цифр без пробілів та знаків (наприклад: 380961234568)"
+        />
+      </div>
+      <!-- Comment-->
+      <div class="order-container-textarea">
+        <label class="order-form-label" for="order-user-comment"
+          >Коментар</label
+        >
+        <textarea
+          class="order-user-comment"
+          id="order-user-comment"
+          name="order-user-comment"
+          rows="7"
+          placeholder="Напишіть ваш коментар"
+          maxlength="500"
+        ></textarea>
+      </div>
+      <!-- Button -->
+      <button class="order-feedback-btn" type="submit">Надіслати</button>
+    </form>
+  </div>
 </div>
 
     </main>
