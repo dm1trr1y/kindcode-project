@@ -84,13 +84,6 @@ async function onSubmit(e) {
     return;
   }
 
-  const payload = {
-    name,
-    phone,
-    comment,
-    animalId: currentPetId,
-  };
-
   if (!name || !phone) {
     Swal.fire({
       icon: 'warning',
@@ -113,7 +106,7 @@ async function onSubmit(e) {
     name,
     phone,
     comment,
-    petId: currentPetId,
+    animalId: currentPetId,
   };
 
   try {
