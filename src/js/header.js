@@ -36,9 +36,12 @@ menu.addEventListener('click', function (event) {
 });
 
 
+const mobileLinks = document.querySelectorAll('.link-mobile a');
+
 mobileLinks.forEach(link => {
-  link.addEventListener('click', handleMobileLinkClick);
+  link.addEventListener('click', closeMobileMenu);
 });
+
 
 function handleMobileLinkClick(event) {
   event.preventDefault();
