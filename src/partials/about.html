@@ -4,12 +4,21 @@
     <div class="about-swiper">
       <ul class="about-slides-list">
         <li class="about-slide">
-          <img
-            class="about-img"
-            srcset="/img/woman-dog-min.jpg 1x, /img/woman-dog@2x-min.jpg 2x"
-            src="/img/woman-dog-min.jpg"
-            alt="Woman and dog on the street"
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcset="/img/woman-dog-min.jpg 1x, /img/woman-dog@2x-min.jpg 2x"
+            />
+            <img
+              class="about-img"
+              srcset="
+                /img/woman-dog-mobile-min.jpg    1x,
+                /img/woman-dog-mobile@2x-min.jpg 2x
+              "
+              src="/img/woman-dog-mobile-min.jpg"
+              alt="Жінка зустрічає собаку на вулиці"
+            />
+          </picture>
           <p class="about-text">
             Все почалося у 2015 році з кількох небайдужих людей та одного
             врятованого собаки. Сьогодні ми — один з найбільших притулків у
@@ -17,15 +26,24 @@
           </p>
         </li>
         <li class="about-slide">
-          <img
-            class="about-img"
-            srcset="
-              /img/happy-sad-dog-min.jpg    1x,
-              /img/happy-sad-dog@2x-min.jpg 2x
-            "
-            src="/img/happy-sad-dog-min.jpg"
-            alt="Dog before and after rehabilitation"
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcset="
+                /img/happy-sad-dog-min.jpg    1x,
+                /img/happy-sad-dog@2x-min.jpg 2x
+              "
+            />
+            <img
+              class="about-img"
+              srcset="
+                /img/happy-sad-dog-mobile-min.jpg    1x,
+                /img/happy-sad-dog-mobile@2x-min.jpg 2x
+              "
+              src="/img/happy-sad-dog-mobile-min.jpg"
+              alt="Собака до та після реабілітації"
+            />
+          </picture>
           <p class="about-text">
             Ми рятуємо, реабілітуємо та знаходимо люблячі родини для
             безпритульних тварин. Наша мета — не просто дати прихисток, а й
@@ -34,12 +52,21 @@
           </p>
         </li>
         <li class="about-slide">
-          <img
-            class="about-img"
-            srcset="/img/happy-dogs-min.jpg 1x, /img/happy-dogs@2x-min.jpg 2x"
-            src="/img/happy-dogs-min.jpg"
-            alt="Group of people holding happy animals in their arms"
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcset="/img/happy-dogs-min.jpg 1x, /img/happy-dogs@2x-min.jpg 2x"
+            />
+            <img
+              class="about-img"
+              srcset="
+                /img/happy-dogs-mobile-min.jpg    1x,
+                /img/happy-dogs-mobile@2x-min.jpg 2x
+              "
+              src="/img/happy-dogs-mobile-min.jpg"
+              alt="Група людей тримає щасливих тваринок на руках"
+            />
+          </picture>
           <p class="about-text">
             "Хатинка Лапок" — це команда професійних ветеринарів, кінологів та
             десятків волонтерів, які щодня вкладають свою душу та час у турботу
@@ -48,12 +75,21 @@
           </p>
         </li>
         <li class="about-slide">
-          <img
-            class="about-img"
-            srcset="/img/playground-min.jpg 1x, /img/playground@2x-min.jpg 2x"
-            src="/img/playground-min.jpg"
-            alt="Animal playground"
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcset="/img/playground-min.jpg 1x, /img/playground@2x-min.jpg 2x"
+            />
+            <img
+              class="about-img"
+              srcset="
+                /img/playground-mobile-min.jpg    1x,
+                /img/playground-mobile@2x-min.jpg 2x
+              "
+              src="/img/playground-mobile-min.jpg"
+              alt="Ігрова зона для тварин"
+            />
+          </picture>
           <p class="about-text">
             Ми створили безпечний та комфортний простір. Кожна тварина отримує
             якісне харчування, своєчасну ветеринарну допомогу, проходить
@@ -61,11 +97,21 @@
           </p>
         </li>
         <li class="about-slide">
-          <img
-            class="about-img"
-            srcset="/img/hug-dog-min.jpg 1x, /img/hug-dog@2x-min.jpg 2x"
-            alt="Woman hugging a dog"
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcset="/img/hug-dog-min.jpg 1x, /img/hug-dog@2x-min.jpg 2x"
+            />
+            <img
+              class="about-img"
+              srcset="
+                /img/hug-dog-mobile-min.jpg    1x,
+                /img/hug-dog-mobile@2x-min.jpg 2x
+              "
+              src="/img/hug-dog-mobile-min.jpg"
+              alt="Жінка обіймає собаку"
+            />
+          </picture>
           <p class="about-text">
             Ваша допомога — безцінна. Ви можете взяти тваринку додому, стати
             волонтером, допомогти фінансово або інформаційно. Кожен маленький
@@ -77,12 +123,12 @@
       <div class="about-swiper-pagination"></div>
       <button class="about-btn-prev" type="button">
         <svg class="about-svg-prev" width="24" height="24">
-          <use href="/img/favicon.svg#arrow_back"></use>
+          <use href="/img/icon-sprite.svg#arrow-back"></use>
         </svg>
       </button>
       <button class="about-btn-next" type="button">
         <svg class="about-svg-next" width="24" height="24">
-          <use href="/img/favicon.svg#arrow_forward"></use>
+          <use href="/img/icon-sprite.svg#arrow-forward"></use>
         </svg>
       </button>
     </div>
