@@ -15,8 +15,8 @@ function filterTemplate({ _id, name }) {
 
 //: ф-я РЕНДЕРУ розмітки Фільтру
 
-export function createCategoriesList(data) {
-  const markup = data.map(filterTemplate).join('');
+export function createCategoriesList(categoryData) {
+  const markup = categoryData.map(filterTemplate).join('');
   categories.insertAdjacentHTML('beforeend', markup);
   return markup;
 }
@@ -24,30 +24,31 @@ export function createCategoriesList(data) {
 //: ф-я ТЕМПЛЕЙТУ розмітки Списку
 
 function petListTemplate({
-  petName,
-  petCategories,
-  petImageLink,
-  petSpecies,
-  petAge,
-  petGender,
-  petDesctiprion,
+  _id,
+  name,
+  categories,
+  image,
+  species,
+  age,
+  gender,
+  description,
 }) {
   return `
      <li class="pet-item-container">
-        <img src="${petImageLink}" alt="image" class="pet-img">
-        <p class="pet-species">${petSpecies}</p>
+        <img src="${image}" alt="image" class="pet-img">
+        <p class="pet-species">${species}</p>
 
         <div class="pet-name-container">
-          <h3 class="pet-name">${petName}</h3>
-          <p class="pet-categories">${petCategories}</p>
+          <h3 class="pet-name">${name}</h3>
+          <p class="pet-categories">${categories}</p>
         </div>
 
         <div class="pet-info-container">
-          <p class="pet-age">${petAge}</p>
-          <p class="pet-gender">${petGender}</p>
+          <p class="pet-age">${age}</p>
+          <p class="pet-gender">${gender}</p>
         </div>
-        <p class="pet-desc">${petDesctiprion}</p>
-        <button class="btn-more">Дізнатися більше</button>
+        <p class="pet-desc">${description}</p>
+        <button class="btn-more" data-id="${_id}">Дізнатися більше</button>
       </li>`;
 }
 

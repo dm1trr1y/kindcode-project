@@ -6,12 +6,22 @@ export async function getAllCategories() {
   return res.data;
 }
 
-//:  запит на Список Тварин
-export async function getPetList(id, limit) {
+//:  запит на Список ВСІХ Тварин
+export async function getPetListAll(limit) {
   const res = await server.get(`/api/animals/`, {
     params: {
       limit: limit,
-      _id: id,
+    },
+  });
+  return res.data;
+
+  //:  запит на Список Тварин по категорії
+}
+export async function getPetListFiltered(id, limit) {
+  const res = await server.get(`/api/animals/`, {
+    params: {
+      limit: limit,
+      categoryId: id,
     },
   });
   return res.data;

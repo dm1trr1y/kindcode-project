@@ -1,5 +1,9 @@
 //: ф-ї API запитів
-import { getAllCategories, getPetList } from './pets-api';
+import {
+  getAllCategories,
+  getPetListAll,
+  getPetListFiltered,
+} from './pets-api';
 
 //: ф-ї рендеру
 import {
@@ -23,6 +27,7 @@ const PER_PAGE = 9;
 let page;
 let query; // для збереження пошуку
 let totalPages;
+let categoriesList;
 
 //: івент DOMLoader
 
@@ -31,14 +36,23 @@ window.addEventListener('DOMContentLoaded', async e => {
 
   // const id =
   // page = 1;
-  let categoriesList;
 
   try {
-    const res = await getAllCategories();
-    createCategoriesList(res);
+    //- запит на всі категорії
+    const categoryData = await getAllCategories();
+    createCategoriesList(categoryData);
 
+    //- створення кнопок категорії
     categoriesList = document.querySelectorAll('.pet-category-btn');
-    console.log(categoriesList);
+
+    let limit = 5;
+    const petListData = await getPetListAll(limit);
+    console.log(petListData);
+
+    createPetList(petListData.animals);
+
+    // if (condition) {
+    // }
   } catch {
     console.log('Error');
   }
