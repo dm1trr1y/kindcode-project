@@ -4,6 +4,9 @@
   | default @import url()
   |============================
 */
+/* preloader */
+@import url('/css/preloader.css');
+
 /* base */
 @import url('../css/global-styles.css');
 
