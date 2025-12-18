@@ -21,4 +21,22 @@ const aboutSwiper = new Swiper('.about-swiper', {
     },
     loop: false,
     watchOverflow: true,
+    breakpoints: {
+    0: {
+      pagination: {
+        dynamicBullets: true,
+        dynamicMainBullets: 1,
+      },
+    },
+    768: {
+      pagination: {
+        dynamicBullets: false,
+      },
+    },
+    1440: {
+      pagination: {
+        dynamicBullets: false,
+      },
+    },
+  },
 });

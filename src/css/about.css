@@ -6,24 +6,56 @@ text-align: center;
 margin-bottom: 40px;
 }
 .about-swiper{
-
+position: relative;
 }
 .about-slides-list{
 
 }
 .about-slide{
-
+position: relative;
+}
+.about-slide::after{
+content: '';
+position: absolute;
+inset: 0;
+z-index: 1;
+background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.63) 100%);
 }
 .about-img{
 
 }
 .about-text{
+position: absolute;
+bottom: 20px;
+left: 20px;
+width: 295px;
+color: #f6f4f1;
+z-index: 2;
+font-family: "IBM Plex Sans", sans-serif;
+line-height: 1.5;
+}
+.about-controls{
+position: relative;
+
+justify-content: space-between;
+align-items: center; 
+margin-top: 16px;
+padding: 0 20px;
+}
+.about-btn-container{
+    
+}
+.about-swiper-pagination{
 
 }
 .about-swiper .swiper-pagination-bullet{
 
 }
-.about-swiper .swiper-pagination-bullet-active{
+.about-swiper .swiper-pagination-bullet-active-main{
+
+}
+.about-swiper .swiper-pagination-bullet-active-prev,
+.about-swiper .swiper-pagination-bullet-active-next {
 
 }
 .about-btn-prev{
