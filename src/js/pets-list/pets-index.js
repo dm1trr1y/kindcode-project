@@ -9,7 +9,10 @@ import {
 import {
   createCategoriesList,
   createPetList,
-  clearPetList,
+  showLoadBtn,
+  hideLoadBtn,
+  showLoader,
+  hideLoader,
   loadMorePetList,
 } from './pets-render';
 
@@ -22,28 +25,36 @@ const refs = {
 };
 
 //: деструктуризація
-const { loadMoreBtn, categoryBtn, categoriesListElem, categoryBtnAll } = refs;
-console.log();
+const { loadMoreBtn, categoriesListElem, categoryBtnAll } = refs;
 
-let PER_PAGE = 8;
-let PAGE = 1;
-let CATEG_ID = '';
-
-// let totalPages;
-// ; Не закоментовувати!
+let PER_PAGE = getLimitByScreen();
+let PAGE;
+let RECT;
+let TOTAL_PAGES;
+let ACTIVE_CATEGORY_ID = null;
 let categoriesList;
 
 //: івент DOMLoader
-// ліміт для сторінки в певнопу діапазоні для моб,таблет,дестоп
-// є відслудковування різних розмірів екрану подія
-//
+
+function getLimitByScreen() {
+  const width = window.innerWidth;
+
+  if (width < 768) return 8; // mobile
+  if (width < 1024) return 8; // tablet
+  return 9; // desktop
+}
+window.addEventListener('resize', () => {
+  const newLimit = getLimitByScreen();
+  if (newLimit !== PER_PAGE) {
+    PER_PAGE = newLimit;
+  }
+});
 
 window.addEventListener('DOMContentLoaded', async e => {
   try {
-    // запит на всі категорії
     const categoryData = await getAllCategories();
     createCategoriesList(categoryData);
-    console.log('category data: ', categoryData);
+    PAGE = 1;
 
     // створення кнопок категорії
     categoriesList = Array.from(document.querySelectorAll('.pet-category-btn'));
@@ -52,16 +63,25 @@ window.addEventListener('DOMContentLoaded', async e => {
       .sort((a, b) => a.textContent.trim().localeCompare(b.textContent.trim()))
       .forEach(btn => categoriesListElem.appendChild(btn));
 
-    const petListData = await getPetListAll(PAGE, PER_PAGE);
-    console.log('petlist data: ', petListData);
+    if (categoryBtnAll.classList.contains('active')) {
+      const petListData = await getPetListAll(PAGE, PER_PAGE);
 
-    createPetList(petListData.animals);
+      TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
+      checkBtnStatus();
+
+      createPetList(petListData.animals);
+    } else {
+      return;
+    }
   } catch {
+    //! додати повідомлення
     console.log('Error');
   }
 
   // прослуховувач та події для отримання та створення розмітки карток
   categoriesListElem.addEventListener('click', async event => {
+    PAGE = 1;
+
     // closest потрібен для того щоб перевірити чи було нажато на саму кнопку
     const categoryBtn = event.target.closest('.pet-category-btn');
     if (!categoryBtn) return;
@@ -73,16 +93,75 @@ window.addEventListener('DOMContentLoaded', async e => {
 
     // виклик функцій запиту та рендеру всіх або фільтрованих категорій
     if (categoryBtnAll.classList.contains('active')) {
+      ACTIVE_CATEGORY_ID = null;
+      showLoader();
       const petListData = await getPetListAll(PAGE, PER_PAGE);
       createPetList(petListData.animals);
+
+      hideLoadBtn();
+      TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
+      hideLoader();
+      checkBtnStatus();
     } else {
-      CATEG_ID = categoryBtn.dataset.id;
-      const petListData = await getPetListFiltered(CATEG_ID, PAGE, PER_PAGE);
+      showLoader();
+      ACTIVE_CATEGORY_ID = categoryBtn.dataset.id;
+
+      const petListData = await getPetListFiltered(
+        ACTIVE_CATEGORY_ID,
+        PAGE,
+        PER_PAGE
+      );
       createPetList(petListData.animals);
+      hideLoader();
+      hideLoadBtn();
+      TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
+      checkBtnStatus();
     }
   });
 });
 
-// LoadMore Button
-// LOADER
-// CSS fix
+//: прослуховувач load more btn
+loadMoreBtn.addEventListener('click', async event => {
+  PAGE += 1;
+
+  const itemContainer = document.querySelector('.pet-item-container');
+  RECT = itemContainer.getBoundingClientRect();
+  showLoader();
+  hideLoadBtn();
+
+  if (ACTIVE_CATEGORY_ID === null) {
+    const petListData = await getPetListAll(PAGE, PER_PAGE);
+
+    loadMorePetList(petListData.animals);
+
+    TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
+    hideLoader();
+    checkBtnStatus();
+  } else {
+    const petListData = await getPetListFiltered(
+      ACTIVE_CATEGORY_ID,
+      PAGE,
+      PER_PAGE
+    );
+    loadMorePetList(petListData.animals);
+    TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
+    hideLoader();
+    checkBtnStatus();
+  }
+
+  checkBtnStatus();
+
+  window.scrollBy({
+    top: RECT.height * 1,
+    behavior: 'smooth',
+  });
+});
+
+//: Ф-я перевірки статусу кнопки
+function checkBtnStatus() {
+  if (PAGE < TOTAL_PAGES) {
+    showLoadBtn();
+  } else {
+    hideLoadBtn();
+  }
+}

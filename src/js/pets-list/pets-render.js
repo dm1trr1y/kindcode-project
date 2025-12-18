@@ -7,7 +7,7 @@ const refs = {
 };
 
 // деструктуризація
-const { categories, petList, LoadMoreBtn, nameContainer } = refs;
+const { categories, petList, loadMoreBtn, nameContainer } = refs;
 
 //: ф-я ТЕМПЛЕЙТУ розмітки Фільтру
 function filterTemplate({ _id, name }) {
@@ -59,8 +59,8 @@ function petListTemplate({
       </li>`;
 }
 
-// window.addEventListener('load', function () {
-//   var loader = document.querySelector('.js-preloader');
+// export function showLoader() {
+//   var loader = document.querySelector('.js-preloader-pet-list');
 //   if (loader) {
 //     loader.style.transition = 'opacity 1s ease-in-out';
 //     loader.style.opacity = '0';
@@ -68,7 +68,28 @@ function petListTemplate({
 //       loader.style.display = 'none';
 //     }, 6000);
 //   }
-// });
+// }
+
+const loader = document.querySelector('.js-preloader-pet-list');
+
+export function showLoader() {
+  if (!loader) return;
+
+  loader.style.display = 'flex'; // або block
+  requestAnimationFrame(() => {
+    loader.classList.add('is-visible');
+  });
+}
+
+export function hideLoader() {
+  if (!loader) return;
+
+  loader.classList.remove('is-visible');
+
+  setTimeout(() => {
+    loader.style.display = 'none';
+  }, 400); // має співпадати з transition у CSS
+}
 
 //: ф-я РЕНДЕРУ розмітки Списку
 
@@ -78,37 +99,28 @@ export function createPetList(data) {
   return markup;
 }
 
+// export function clearPetList() {
+//   petList.innerHTML = '';
+// }
+
+export function showLoadBtn() {
+  if (loadMoreBtn.classList.contains('hidden')) {
+    loadMoreBtn.classList.remove('hidden');
+  } else {
+    console.log('⚠️ class hidden its alredy  REMOVED ');
+  }
+}
+
+export function hideLoadBtn() {
+  if (!loadMoreBtn.classList.contains('hidden')) {
+    loadMoreBtn.classList.add('hidden');
+  } else {
+    console.log('⚠️ class hidden its alredy  ADDED');
+  }
+}
+
 export function loadMorePetList(data) {
   const markup = data.map(petListTemplate).join('');
   petList.insertAdjacentHTML('beforeend', markup);
   return markup;
 }
-
-export function clearPetList() {
-  petList.innerHTML = '';
-}
-
-//: DOM render the filter buttons
-//
-
-//: DOM render the pet item
-
-// Опис функціоналу:
-
-// "При відкритті сторінки додатку повинні відображатись кнопки з фільтрами по категоріям отримані з БД  за допомогою запиту наданого в завданні API, маршрут - /api/categories.
-// Кнопка Всі активна за замовчуванням, клік по даній кнопці виконує запит за тваринами всіх категорій."
-
-// "При відкритті сторінки додатку за замовчуванням повинно відображатись:
-// -9 карток з тваринами - на десктопі,
-// -8 карток з тваринамина - на планшеті та мобілці,"
-// Картки з тваринами створюються на основі даних, отриманих в запиті до БД за допомогою наданого в завданні API, маршрут - /api/animals.
-// При кліку на обрану зі списку категорію елемент з даною категорією повинен набути стилі акценту.
-// При кліку на обрану зі списку категорію, повинен відбутись запит до БД і список тварин повинен бути відфільтрований, відображаючи тільки тварин з обраної категорії.
-// При кліку по кнопці «Дізнатись більше» на картці тварини, відкривається модальне вікно з детальною інформацією про неї.
-// "Кнопка «Завантажити ще» завантажує наступну порцію тварин:
-// - 9 елементів - десктоп,
-// - 8 елементів - планшет та мобілка.
-// і додає їх до вже відображених."
-// Якщо більше немає тварин для завантаження, кнопка "Завантажити ще" зникає або стає неактивною.
-// "При наведенні на кнопки повинен змінюватись курсор.
-// При наведенні, фокусі або кліку у кнопок повинні змінюватись стилі відповідно до шаблону UI Kit в макеті."
