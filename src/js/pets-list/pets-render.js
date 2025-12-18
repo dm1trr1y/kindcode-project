@@ -1,12 +1,13 @@
 //: пошук DOM елементів
 const refs = {
-  categories: document.querySelector('.pet-categories-list'),
   petList: document.querySelector('.pet-list'),
+  nameContainer: document.querySelector('.pet-name-container'),
+  categories: document.querySelector('.pet-categories-list'),
   loadMoreBtn: document.querySelector('.js-btn-load'),
 };
 
 // деструктуризація
-const { categories, petList, LoadMoreBtn } = refs;
+const { categories, petList, LoadMoreBtn, nameContainer } = refs;
 
 //: ф-я ТЕМПЛЕЙТУ розмітки Фільтру
 function filterTemplate({ _id, name }) {
@@ -21,6 +22,8 @@ export function createCategoriesList(categoryData) {
   return markup;
 }
 
+let tagsArr;
+
 //: ф-я ТЕМПЛЕЙТУ розмітки Списку
 
 function petListTemplate({
@@ -33,6 +36,10 @@ function petListTemplate({
   gender,
   description,
 }) {
+  const tagsMarkup = categories
+    .map(category => `<p class="pet-categories">${category.name}</p>`)
+    .join('');
+
   return `
      <li class="pet-item-container">
         <img src="${image}" alt="image" class="pet-img">
@@ -40,7 +47,7 @@ function petListTemplate({
 
         <div class="pet-name-container">
           <h3 class="pet-name">${name}</h3>
-          <p class="pet-categories">${categories}</p>
+         ${tagsMarkup}
         </div>
 
         <div class="pet-info-container">
@@ -51,6 +58,17 @@ function petListTemplate({
         <button class="btn-more" data-id="${_id}">Дізнатися більше</button>
       </li>`;
 }
+
+// window.addEventListener('load', function () {
+//   var loader = document.querySelector('.js-preloader');
+//   if (loader) {
+//     loader.style.transition = 'opacity 1s ease-in-out';
+//     loader.style.opacity = '0';
+//     this.setTimeout(function () {
+//       loader.style.display = 'none';
+//     }, 6000);
+//   }
+// });
 
 //: ф-я РЕНДЕРУ розмітки Списку
 
@@ -79,9 +97,6 @@ export function clearPetList() {
 
 // "При відкритті сторінки додатку повинні відображатись кнопки з фільтрами по категоріям отримані з БД  за допомогою запиту наданого в завданні API, маршрут - /api/categories.
 // Кнопка Всі активна за замовчуванням, клік по даній кнопці виконує запит за тваринами всіх категорій."
-
-//; яким чином виконує запит?
-//; варіанти: listener на обновлення сторінки
 
 // "При відкритті сторінки додатку за замовчуванням повинно відображатись:
 // -9 карток з тваринами - на десктопі,

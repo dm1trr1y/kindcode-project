@@ -17,58 +17,72 @@ import {
 const refs = {
   loadMoreBtn: document.querySelector('.js-btn-load'),
   categoryBtn: document.querySelector('.pet-category-btn'),
-  // categoryAllBtn: document.querySelector('#all-btn'),
+  categoriesListElem: document.querySelector('.pet-categories-list'),
+  categoryBtnAll: document.querySelector('#all-btn'),
 };
 
 //: деструктуризація
-const { loadMoreBtn, categoryBtn, categoryAllBtn } = refs;
+const { loadMoreBtn, categoryBtn, categoriesListElem, categoryBtnAll } = refs;
+console.log();
 
-const PER_PAGE = 9;
-let page;
-let query; // для збереження пошуку
-let totalPages;
+let PER_PAGE = 8;
+let PAGE = 1;
+let CATEG_ID = '';
+
+// let totalPages;
+// ; Не закоментовувати!
 let categoriesList;
 
 //: івент DOMLoader
+// ліміт для сторінки в певнопу діапазоні для моб,таблет,дестоп
+// є відслудковування різних розмірів екрану подія
+//
 
 window.addEventListener('DOMContentLoaded', async e => {
-  e.preventDefault();
-
-  // const id =
-  // page = 1;
-
   try {
-    //- запит на всі категорії
+    // запит на всі категорії
     const categoryData = await getAllCategories();
     createCategoriesList(categoryData);
+    console.log('category data: ', categoryData);
 
-    //- створення кнопок категорії
-    categoriesList = document.querySelectorAll('.pet-category-btn');
+    // створення кнопок категорії
+    categoriesList = Array.from(document.querySelectorAll('.pet-category-btn'));
 
-    let limit = 5;
-    const petListData = await getPetListAll(limit);
-    console.log(petListData);
+    categoriesList
+      .sort((a, b) => a.textContent.trim().localeCompare(b.textContent.trim()))
+      .forEach(btn => categoriesListElem.appendChild(btn));
+
+    const petListData = await getPetListAll(PAGE, PER_PAGE);
+    console.log('petlist data: ', petListData);
 
     createPetList(petListData.animals);
-
-    // if (condition) {
-    // }
   } catch {
     console.log('Error');
   }
 
-  categoriesList.forEach(categoryBtn => {
-    categoryBtn.addEventListener('click', () => {
-      categoriesList.forEach(el => {
-        el.classList.remove('active');
-      });
-      categoryBtn.classList.add('active');
-    });
+  // прослуховувач та події для отримання та створення розмітки карток
+  categoriesListElem.addEventListener('click', async event => {
+    // closest потрібен для того щоб перевірити чи було нажато на саму кнопку
+    const categoryBtn = event.target.closest('.pet-category-btn');
+    if (!categoryBtn) return;
+
+    // проходження по масиву та видалення всих active
+    categoriesList.forEach(el => el.classList.remove('active'));
+    // додати до кнопки на яку було нажато клас active
+    categoryBtn.classList.add('active');
+
+    // виклик функцій запиту та рендеру всіх або фільтрованих категорій
+    if (categoryBtnAll.classList.contains('active')) {
+      const petListData = await getPetListAll(PAGE, PER_PAGE);
+      createPetList(petListData.animals);
+    } else {
+      CATEG_ID = categoryBtn.dataset.id;
+      const petListData = await getPetListFiltered(CATEG_ID, PAGE, PER_PAGE);
+      createPetList(petListData.animals);
+    }
   });
 });
 
-// визначити що підгружає і як ВСІ картинки коли кнопка ВСІ є active
-//  далі зробити функцію очистки тоді коли перемикаємо і щоб воно прогружало тільки
-// ті картинки в якій є айддішка
-// тобто потрібно дати айдішку функції і вона вже повертає картинки тільки
-// якщо вона містить ту айдішку
+// LoadMore Button
+// LOADER
+// CSS fix
