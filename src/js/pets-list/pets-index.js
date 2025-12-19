@@ -58,9 +58,15 @@ window.addEventListener('DOMContentLoaded', async e => {
 
     // створення кнопок категорії
     categoriesList = Array.from(document.querySelectorAll('.pet-category-btn'));
+    console.log(categoriesList);
 
+    // сортування по останній цифрі айді
     categoriesList
-      .sort((a, b) => a.textContent.trim().localeCompare(b.textContent.trim()))
+      .sort((a, b) => {
+        const aId = Number(a.dataset.id.slice(-1));
+        const bId = Number(b.dataset.id.slice(-1));
+        return aId - bId;
+      })
       .forEach(btn => categoriesListElem.appendChild(btn));
 
     if (categoryBtnAll.classList.contains('active')) {

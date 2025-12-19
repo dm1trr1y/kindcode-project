@@ -22,8 +22,6 @@ export function createCategoriesList(categoryData) {
   return markup;
 }
 
-let tagsArr;
-
 //: ф-я ТЕМПЛЕЙТУ розмітки Списку
 
 function petListTemplate({
@@ -34,7 +32,7 @@ function petListTemplate({
   species,
   age,
   gender,
-  description,
+  shortDescription,
 }) {
   const tagsMarkup = categories
     .map(category => `<p class="pet-categories">${category.name}</p>`)
@@ -44,31 +42,24 @@ function petListTemplate({
      <li class="pet-item-container">
         <img src="${image}" alt="image" class="pet-img">
         <p class="pet-species">${species}</p>
-
         <div class="pet-name-container">
           <h3 class="pet-name">${name}</h3>
-         ${tagsMarkup}
+        <div class="pet-category-tag">${tagsMarkup}</div>
         </div>
+      
 
+       <div class="pet-info-bottom">
         <div class="pet-info-container">
           <p class="pet-age">${age}</p>
           <p class="pet-gender">${gender}</p>
         </div>
-        <p class="pet-desc">${description}</p>
+        <p class="pet-desc">${shortDescription}</p>
         <button class="btn-more" data-id="${_id}">Дізнатися більше</button>
+      </div>
+     
+      
       </li>`;
 }
-
-// export function showLoader() {
-//   var loader = document.querySelector('.js-preloader-pet-list');
-//   if (loader) {
-//     loader.style.transition = 'opacity 1s ease-in-out';
-//     loader.style.opacity = '0';
-//     this.setTimeout(function () {
-//       loader.style.display = 'none';
-//     }, 6000);
-//   }
-// }
 
 const loader = document.querySelector('.js-preloader-pet-list');
 
@@ -99,23 +90,15 @@ export function createPetList(data) {
   return markup;
 }
 
-// export function clearPetList() {
-//   petList.innerHTML = '';
-// }
-
 export function showLoadBtn() {
   if (loadMoreBtn.classList.contains('hidden')) {
     loadMoreBtn.classList.remove('hidden');
-  } else {
-    console.log('⚠️ class hidden its alredy  REMOVED ');
   }
 }
 
 export function hideLoadBtn() {
   if (!loadMoreBtn.classList.contains('hidden')) {
     loadMoreBtn.classList.add('hidden');
-  } else {
-    console.log('⚠️ class hidden its alredy  ADDED');
   }
 }
 
