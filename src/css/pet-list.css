@@ -1,24 +1,23 @@
 /*: #region Title  */
 .pet-title {
-    font-family: var(--second-family);
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 120%;
-    letter-spacing: -0.01em;
-    text-align: center;
-    color: var(--color-scheme-1-text);
-    margin-bottom: 16px;
-
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 16px;
 }
 
 .pet-sub-title {
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    text-align: center;
-    color: var(--color-scheme-1-text);
-    margin-bottom: 32px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 32px;
 }
 
 /* #endregion */
@@ -26,12 +25,12 @@
 /*: #region Categories */
 
 .pet-categories-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 4px;
-    margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 4px;
+  margin-bottom: 32px;
 }
 
 .pet-category-btn {
@@ -53,9 +52,8 @@
 }
 
 .pet-category-btn:hover {
-    border-radius: 100px;
-    background: var(--color-scheme-1-foreground);
-
+  border-radius: 100px;
+  background: var(--color-scheme-1-foreground);
 }
 
 .pet-category-btn:active {
@@ -64,11 +62,11 @@
 }
 
 .pet-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 32px;
-    margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-bottom: 40px;
 }
 
 .pet-item-container {
@@ -91,91 +89,89 @@
 }
 
 .pet-info-bottom {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 .pet-img {
-    border-radius: 8px;
-    width: 100%;
-    height: 245px;
-    object-fit: cover;
-    margin-bottom: 16px;
+  border-radius: 8px;
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+  margin-bottom: 16px;
 }
 
 .pet-species {
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 150%;
-    color: var(--color-scheme-1-text);
-    margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 4px;
 }
 
-.pet-name-container {}
+/* .pet-name-container {} */
 
 .pet-name {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 140%;
-    letter-spacing: -0.01em;
-    color: var(--color-scheme-1-text);
-    margin-bottom: 4px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 4px;
 }
 
 .pet-categories {
-    font-weight: 600;
-    font-size: 10px;
-    line-height: 150%;
-    color: var(--color-neutral-darkest);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 150%;
+  color: var(--color-neutral-darkest);
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 10px;
-    border: 1px solid var(--opacity-transparent);
-    border-radius: 100px;
-    background: var(--opacity-neutral-darkest-5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border: 1px solid var(--opacity-transparent);
+  border-radius: 100px;
+  background: var(--opacity-neutral-darkest-5);
 }
 
 .pet-info-container {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-    ;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .pet-age {
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 150%;
-    color: var(--color-scheme-1-text);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
 }
 
 .pet-gender {
-
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 150%;
-    color: var(--color-scheme-1-text);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
 }
 
 .pet-desc {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 150%;
-    color: var(--color-scheme-1-text);
-    margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 16px;
 }
 
 /* #endregion */
 
 /*: #region More Button */
 .btn-more {
-    border: 1px solid var(--color-neutral-darkest);
-    border-radius: 8px;
-    padding: 8px 20px;
-    width: 100%;
-    height: 40px;
-    background-color: transparent;
+  border: 1px solid var(--color-neutral-darkest);
+  border-radius: 8px;
+  padding: 8px 20px;
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
 
     font-weight: 400;
     font-size: 14px;
@@ -234,9 +230,9 @@
 
 .show-more-btn:focus,
 .show-more-btn:hover {
-    border: 1px solid var(--color-neutral-darkest);
-    background: var(--color-mariner-light);
-    color: var(--color-neutral-darkest);
+  border: 1px solid var(--color-neutral-darkest);
+  background: var(--color-mariner-light);
+  color: var(--color-neutral-darkest);
 }
 
 .show-more-btn:active {
@@ -246,8 +242,8 @@
 }
 
 .show-more-btn:disabled {
-    opacity: 0.3;
-    border: 1px solid var(--color-neutral-darkest);
+  opacity: 0.3;
+  border: 1px solid var(--color-neutral-darkest);
 }
 
 /* #endregion */
@@ -261,86 +257,90 @@
     opacity: 0;
     transition: opacity 0.4s ease;
 }
+.pet-paws-loader {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .pet-paws-loader-box.is-visible {
-    display: flex;
-    opacity: 1;
+  display: flex;
+  opacity: 1;
 }
 
 :root {
-    --paw-color: #d31145;
-    --paw-size: 0.7em;
-    --paw-duration: 2050ms;
-    --paw-delay-step: 0.25s;
+  --paw-color: #d31145;
+  --paw-size: 0.7em;
+  --paw-duration: 2050ms;
+  --paw-delay-step: 0.25s;
 }
 
-
 .pet-paws-loader {
-    transform: rotate(90deg) translate(-50%, 0%);
-    font-size: 50px;
+  transform: rotate(90deg) translate(-50%, 0%);
+  font-size: 50px;
 }
 
 /* paw base */
 .pet-paws-loader .paw {
-    width: var(--paw-size);
-    height: var(--paw-size);
-    opacity: 0;
+  width: var(--paw-size);
+  height: var(--paw-size);
+  opacity: 0;
 
-    animation: pawAnimation var(--paw-duration) ease-in-out infinite;
+  animation: pawAnimation var(--paw-duration) ease-in-out infinite;
 }
 
 /* children */
 
 .pet-paws-loader .paw .paw-icon {
-    color: var(--paw-color);
-    width: var(--paw-size);
-    height: var(--paw-size);
+  color: var(--paw-color);
+  width: var(--paw-size);
+  height: var(--paw-size);
 }
 
 /* odd / even */
 .pet-paws-loader .paw:nth-child(odd) {
-    transform: rotate(-10deg);
+  transform: rotate(-10deg);
 }
 
 .pet-paws-loader .paw:nth-child(even) {
-    transform: rotate(10deg) translate(125%, 0);
+  transform: rotate(10deg) translate(125%, 0);
 }
 
 /* animation delays */
 .pet-paws-loader .paw:nth-child(1) {
-    animation-delay: calc(var(--paw-delay-step) * 5);
+  animation-delay: calc(var(--paw-delay-step) * 5);
 }
 
 .pet-paws-loader .paw:nth-child(2) {
-    animation-delay: calc(var(--paw-delay-step) * 4);
+  animation-delay: calc(var(--paw-delay-step) * 4);
 }
 
 .pet-paws-loader .paw:nth-child(3) {
-    animation-delay: calc(var(--paw-delay-step) * 3);
+  animation-delay: calc(var(--paw-delay-step) * 3);
 }
 
 .pet-paws-loader .paw:nth-child(4) {
-    animation-delay: calc(var(--paw-delay-step) * 2);
+  animation-delay: calc(var(--paw-delay-step) * 2);
 }
 
 .pet-paws-loader .paw:nth-child(5) {
-    animation-delay: var(--paw-delay-step);
+  animation-delay: var(--paw-delay-step);
 }
 
 .pet-paws-loader .paw:nth-child(6) {
-    animation-delay: 0s;
+  animation-delay: 0s;
 }
 
 /* animation */
 @keyframes pawAnimation {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    50%,
-    100% {
-        opacity: 0;
-    }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* #endregion  */

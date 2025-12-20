@@ -5,6 +5,6 @@ window.addEventListener('load', function () {
     loader.style.opacity = '0';
     this.setTimeout(function () {
       loader.style.display = 'none';
-    }, 6000);
+    }, 1000);
   }
 });
