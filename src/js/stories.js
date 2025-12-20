@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const ratyBox = new Raty(box, {
         readOnly: true,
         path: 'img',
-        starHalf: 'star-half.png',
-        starOn: 'star-filled.png',
-        starOff: 'star-outline.png',
+        starHalf: 'star-half-min.jpg',
+        starOn: 'star-filled-min.jpg',
+        starOff: 'star-outline-min.jpg',
         numberMax: 5,
       });
       ratyBox.init();
