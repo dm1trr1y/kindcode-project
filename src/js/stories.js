@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const raty = document.querySelectorAll('.star-rating').forEach(box => {
       const ratyBox = new Raty(box, {
         readOnly: true,
-        path: 'img',
+        path: 'src/img',
         starHalf: 'star-half-min.jpg',
         starOn: 'star-filled-min.jpg',
         starOff: 'star-outline-min.jpg',
