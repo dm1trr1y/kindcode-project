@@ -54,7 +54,7 @@ function petListTemplate({
           <p class="pet-gender">${gender}</p>
         </div>
         <p class="pet-desc">${shortDescription}</p>
-        <button class="btn-more" data-id="${_id}">Дізнатися більше</button>
+        <button class="btn-more" id="js-btn-more" data-id="${_id}">Дізнатися більше</button>
       </div>
      
       
@@ -79,7 +79,7 @@ export function hideLoader() {
 
   setTimeout(() => {
     loader.style.display = 'none';
-  }, 400); // має співпадати з transition у CSS
+  }, 300); // має співпадати з transition у CSS
 }
 
 //: ф-я РЕНДЕРУ розмітки Списку
