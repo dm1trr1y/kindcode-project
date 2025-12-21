@@ -6,6 +6,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import starOn from '../img/star-filled-min.jpg';
+import starOff from '../img/star-outline-min.jpg';
+import starHalf from '../img/star-half-min.jpg';
+
 const API_URL = 'https://paw-hut.b.goit.study/api/feedbacks';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,14 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
       wrapper.appendChild(slide);
       // renderRating(slide.querySelector('.feedback-card__rating'), rate);
     });
-    const raty = document.querySelectorAll('.star-rating').forEach(box => {
+    document.querySelectorAll('.star-rating').forEach(box => {
       const ratyBox = new Raty(box, {
         readOnly: true,
-        path: '/img',
-        starHalf: 'star-half-min.jpg',
-        // starOn: 'star-filled-min.jpg',
-        starOn: 'woman-dog-min.jpg',
-        starOff: 'star-outline-min.jpg',
+        starHalf: starHalf,
+        starOn: starOn,
+        starOff: starOff,
         numberMax: 5,
       });
       ratyBox.init();
