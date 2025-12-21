@@ -40,7 +40,7 @@ function getLimitByScreen() {
   const width = window.innerWidth;
 
   if (width < 768) return 8; // mobile
-  if (width < 1024) return 8; // tablet
+  if (width < 1440) return 8; // tablet
   return 9; // desktop
 }
 window.addEventListener('resize', () => {
@@ -58,7 +58,6 @@ window.addEventListener('DOMContentLoaded', async e => {
 
     // створення кнопок категорії
     categoriesList = Array.from(document.querySelectorAll('.pet-category-btn'));
-    console.log(categoriesList);
 
     // сортування по останній цифрі айді
     categoriesList
@@ -79,9 +78,8 @@ window.addEventListener('DOMContentLoaded', async e => {
     } else {
       return;
     }
-  } catch {
-    //! додати повідомлення
-    console.log('Error');
+  } catch (err) {
+    showToast(err.message);
   }
 
   // прослуховувач та події для отримання та створення розмітки карток
