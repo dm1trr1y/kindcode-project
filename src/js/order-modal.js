@@ -11,8 +11,10 @@ const refs = {
 };
 
 let currentPetId = null;
+let prevBodyOverflow = '';
 
 function lockScroll() {
+  prevBodyOverflow = document.body.style.overflow;
   document.body.style.overflow = 'hidden';
 }
 
@@ -21,9 +23,9 @@ function unlockScroll() {
 }
 
 export function openOrderModal(petId) {
-  lockScroll();
   currentPetId = petId;
   refs.backdrop.classList.add('is-open');
+  lockScroll();
 }
 
 export function closeOrderModal() {
@@ -35,13 +37,11 @@ export function closeOrderModal() {
 
 function onBackdropClick(e) {
   if (e.target === refs.backdrop) closeOrderModal();
-  unlockScroll();
 }
 
 function onEsc(e) {
   if (e.key === 'Escape' && refs.backdrop.classList.contains('is-open')) {
     closeOrderModal();
-    unlockScroll();
   }
 }
 
@@ -109,6 +109,15 @@ async function onSubmit(e) {
     animalId: currentPetId,
   };
 
+  if (!/^[0-9]{12}$/.test(phone)) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Невірний номер телефону',
+      text: 'Введіть номер у форматі 380XXXXXXXXX',
+    });
+    return;
+  }
+
   try {
     const res = await fetch(`${API_BASE}/orders`, {
       method: 'POST',
@@ -148,4 +157,7 @@ export function initOrderModal() {
   refs.backdrop.addEventListener('click', onBackdropClick);
   window.addEventListener('keydown', onEsc);
   refs.form.addEventListener('submit', onSubmit);
+  if (refs.backdrop.classList.contains('is-open')) {
+    lockScroll();
+  }
 }
