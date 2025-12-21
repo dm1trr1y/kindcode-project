@@ -41,3 +41,5 @@ const aboutSwiper = new Swiper('.about-swiper', {
     },
   },
 });
+
+window.onresize = aboutSwiper.update();

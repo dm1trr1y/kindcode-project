@@ -11,21 +11,19 @@ const refs = {
 };
 
 let currentPetId = null;
-let prevBodyOverflow = '';
 
 function lockScroll() {
-  prevBodyOverflow = document.body.style.overflow;
   document.body.style.overflow = 'hidden';
 }
 
 function unlockScroll() {
-  document.body.style.overflow = prevBodyOverflow;
+  document.body.style.overflow = '';
 }
 
 export function openOrderModal(petId) {
+  lockScroll();
   currentPetId = petId;
   refs.backdrop.classList.add('is-open');
-  lockScroll();
 }
 
 export function closeOrderModal() {
@@ -37,11 +35,13 @@ export function closeOrderModal() {
 
 function onBackdropClick(e) {
   if (e.target === refs.backdrop) closeOrderModal();
+  unlockScroll();
 }
 
 function onEsc(e) {
   if (e.key === 'Escape' && refs.backdrop.classList.contains('is-open')) {
     closeOrderModal();
+    unlockScroll();
   }
 }
 

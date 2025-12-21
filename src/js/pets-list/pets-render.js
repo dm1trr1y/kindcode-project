@@ -63,25 +63,60 @@ function petListTemplate({
 
 const loader = document.querySelector('.js-preloader-pet-list');
 
+// export function showLoader() {
+//   if (!loader) return;
+//   loader.classList.add('is-visible'); // display: flex
+
+//   requestAnimationFrame(() => {
+//     loader.style.opacity = '1'; // запускаем fade-in
+//   });
+// }
+
+// export function hideLoader() {
+//   if (!loader) return;
+//   loader.style.opacity = '0'; // fade-out
+
+//   setTimeout(() => {
+//     loader.classList.remove('is-visible'); // display: none ПОСЛЕ анимации
+//   }, 1500); // должно совпадать с transition
+// }
+let loaderShownAt = 0;
+let hideTimeoutId = null;
+
+const MIN_VISIBLE_TIME = 1200; // лоадер минимум 1.2с
+const FADE_DURATION = 250; // CSS transition
+
 export function showLoader() {
   if (!loader) return;
 
-  loader.style.display = 'flex'; // або block
+  if (hideTimeoutId) {
+    clearTimeout(hideTimeoutId);
+    hideTimeoutId = null;
+  }
+
+  loaderShownAt = performance.now();
+  loader.classList.add('is-visible');
+
   requestAnimationFrame(() => {
-    loader.classList.add('is-visible');
+    loader.style.opacity = '1';
   });
 }
 
 export function hideLoader() {
   if (!loader) return;
 
-  loader.classList.remove('is-visible');
+  const elapsed = performance.now() - loaderShownAt;
+  const waitTime = Math.max(0, MIN_VISIBLE_TIME - elapsed);
 
-  setTimeout(() => {
-    loader.style.display = 'none';
-  }, 300); // має співпадати з transition у CSS
+  hideTimeoutId = setTimeout(() => {
+    loader.style.opacity = '0';
+
+    setTimeout(() => {
+      loader.classList.remove('is-visible');
+      hideTimeoutId = null;
+    }, FADE_DURATION);
+  }, waitTime);
 }
-
 //: ф-я РЕНДЕРУ розмітки Списку
 
 export function createPetList(data) {

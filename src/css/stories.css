@@ -146,7 +146,14 @@
     bottom: auto;
   }
 }
-
+.success-stories__slider .swiper-buttons-group .swiper-button-next {
+  right: auto;
+  left: var(--swiper-navigation-sides-offset, 4px);
+}
+.success-stories__slider .swiper-buttons-group .swiper-button-prev {
+  left: auto;
+  right: var(--swiper-navigation-sides-offset, 4px);
+}
 /* Лоадер */
 
 .ajax-loader {
