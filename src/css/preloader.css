@@ -33,6 +33,7 @@
 /* children */
 
 .paws-loader .paw .paw-icon {
+  stroke: var(--paw-color);
   color: var(--paw-color);
   width: var(--paw-size);
   height: var(--paw-size);

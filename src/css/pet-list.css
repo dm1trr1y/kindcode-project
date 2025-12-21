@@ -214,10 +214,6 @@
   border: 1px solid var(--color-neutral-darkest);
 }
 
-/*: Paw Loader */
-.pet-list-preloader-overlay {
-  position: relative;
-}
 .pet-paws-loader-box {
   /* прихований за замовчуванням */
   display: none;
