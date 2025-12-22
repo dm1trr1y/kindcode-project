@@ -86,7 +86,7 @@
   flex-wrap: wrap;
   gap: 4px;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 .pet-img {
   border-radius: 8px;
@@ -281,13 +281,6 @@
 
 .pet-paws-loader-box.is-visible {
   display: flex;
-}
-
-:root {
-  --paw-color: #d31145;
-  --paw-size: 0.7em;
-  --paw-duration: 2050ms;
-  --paw-delay-step: 0.25s;
 }
 
 .pet-paws-loader {

@@ -61,7 +61,9 @@ async function onSubmit(e) {
   const name = refs.form.elements['order-user-name']?.value.trim();
   const rawPhone = refs.form.elements['order-user-phone']?.value.trim();
   const phone = rawPhone.replace(/\D/g, '');
-  const comment = refs.form.elements['order-user-comment']?.value.trim() || '';
+  const userComment =
+    refs.form.elements['order-user-comment']?.value.trim() || '';
+  let comment = '';
   let isValid = true;
 
   if (!name) {
@@ -78,7 +80,7 @@ async function onSubmit(e) {
     refs.errorNameBox.innerHTML = '';
   }
 
-  if (comment.length > 500) {
+  if (userComment.length > 500) {
     refs.errorCommentBox.innerHTML =
       'Коментар занадто довгий. Макс. 500 символів.';
     isValid = false;
@@ -114,6 +116,11 @@ async function onSubmit(e) {
       text: 'Немає id тваринки яке передається з модального вікна.',
     });
     return;
+  }
+  if (!userComment) {
+    comment = '#без коментаря';
+  } else {
+    comment = userComment;
   }
 
   const payload = {

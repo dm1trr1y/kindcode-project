@@ -11,7 +11,7 @@
 .page-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
   background-color: #fff;
 }
 
@@ -41,12 +41,11 @@
 }
 
 .laptop-button {
-  display: flex;
-  align-items: center;
+  text-align: center;
   border: 1px solid #88765c;
   border-radius: 8px;
   padding: 8px 20px;
-  width: 130px;
+  min-width: 130px;
   height: 40px;
   background-color: #88765c;
   font-family: var(--font-family);

@@ -223,24 +223,6 @@
   }
 }
 
-/* Тости */
-
-#toast-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.toast-message {
-  background: #333;
-  color: #fff;
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
 /* Адаптив */
 
 /* Планшети (768px — 1439px) */
