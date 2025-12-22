@@ -54,9 +54,9 @@ function petListTemplate({
           <p class="pet-gender">${gender}</p>
         </div>
         <p class="pet-desc">${shortDescription}</p>
-        <button class="btn-more" id="js-btn-more" data-id="${_id}">Дізнатися більше</button>
       </div>
-     
+        <button class="btn-more" id="js-btn-more" data-id="${_id}">Дізнатися більше</button>
+
       
       </li>`;
 }

@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 //: ф-ї API запитів
 import {
   getAllCategories,
@@ -79,7 +80,11 @@ window.addEventListener('DOMContentLoaded', async e => {
       return;
     }
   } catch (err) {
-    showToast(err.message);
+    Swal.fire({
+      icon: 'error',
+      title: 'Помилка!',
+      text: 'Не вдалося завантажити список тварин',
+    });
   }
 
   // прослуховувач та події для отримання та створення розмітки карток

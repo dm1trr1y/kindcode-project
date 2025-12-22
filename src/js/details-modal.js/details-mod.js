@@ -59,6 +59,6 @@ refs.modal.addEventListener('click', e => {
 });
 refs.btnSubmit.addEventListener('click', () => {
   const petId = refs.btnSubmit.dataset.petId;
-  openOrderModal(petId);
   closeModal();
+  openOrderModal(petId);
 });

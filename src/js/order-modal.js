@@ -12,14 +12,19 @@ const refs = {
 
 let currentPetId = null;
 let prevBodyOverflow = '';
+let lockCount = 0;
 
 function lockScroll() {
+  lockCount++;
   prevBodyOverflow = document.body.style.overflow;
   document.body.style.overflow = 'hidden';
 }
 
 function unlockScroll() {
-  document.body.style.overflow = '';
+  lockCount = Math.max(0, lockCount - 1);
+  if (lockCount === 0) {
+    document.body.style.overflow = '';
+  }
 }
 
 export function openOrderModal(petId) {
@@ -47,7 +52,6 @@ function onEsc(e) {
 
 async function onSubmit(e) {
   e.preventDefault();
-
   const name = refs.form.elements['order-user-name']?.value.trim();
   const rawPhone = refs.form.elements['order-user-phone']?.value.trim();
   const phone = rawPhone.replace(/\D/g, '');

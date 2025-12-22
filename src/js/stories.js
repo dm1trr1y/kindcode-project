@@ -1,7 +1,7 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import Raty from 'raty-js';
-
+import Swal from 'sweetalert2';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -12,21 +12,14 @@ import starHalf from '../img/star-half-min.jpg';
 
 const API_URL = 'https://paw-hut.b.goit.study/api/feedbacks';
 
+const toast = document.querySelector('#toast-container');
+
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.getElementById('feedbacks-wrapper');
   const loader = document.getElementById('loader');
   const toastContainer = document.getElementById('toast-container');
 
   if (!wrapper || !loader || !toastContainer) return;
-
-  // Функція для тостів
-  const showToast = msg => {
-    const toast = document.createElement('div');
-    toast.className = 'toast-message';
-    toast.textContent = msg;
-    toastContainer.appendChild(toast);
-    setTimeout(() => toast.remove(), 4000);
-  };
 
   // Створення карток
   const renderFeedbacks = feedbacks => {
@@ -100,7 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
       renderFeedbacks(feedbacks);
       initSwiper();
     } catch (err) {
-      showToast(err.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Помилка!',
+        text: 'Не вдалося завантажити відгуки',
+      });
     } finally {
       loader.style.display = 'none';
     }
