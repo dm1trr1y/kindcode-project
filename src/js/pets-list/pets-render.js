@@ -40,7 +40,7 @@ function petListTemplate({
 
   return `
      <li class="pet-item-container">
-        <img src="${image}" alt="image" class="pet-img">
+        <img src="${image}" alt="image" class="pet-img" loading="lazy" />
         <p class="pet-species">${species}</p>
         <div class="pet-name-container">
           <h3 class="pet-name">${name}</h3>
