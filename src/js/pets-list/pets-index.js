@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 //: ф-ї API запитів
 import {
   getAllCategories,
@@ -79,7 +80,11 @@ window.addEventListener('DOMContentLoaded', async e => {
       return;
     }
   } catch (err) {
-    showToast(err.message);
+    Swal.fire({
+      icon: 'error',
+      title: 'Помилка!',
+      text: 'Не вдалося завантажити список тварин',
+    });
   }
 
   // прослуховувач та події для отримання та створення розмітки карток
@@ -98,16 +103,13 @@ window.addEventListener('DOMContentLoaded', async e => {
     // виклик функцій запиту та рендеру всіх або фільтрованих категорій
     if (categoryBtnAll.classList.contains('active')) {
       ACTIVE_CATEGORY_ID = null;
-      showLoader();
       const petListData = await getPetListAll(PAGE, PER_PAGE);
       createPetList(petListData.animals);
 
       hideLoadBtn();
       TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
-      hideLoader();
       checkBtnStatus();
     } else {
-      showLoader();
       ACTIVE_CATEGORY_ID = categoryBtn.dataset.id;
 
       const petListData = await getPetListFiltered(
@@ -116,7 +118,6 @@ window.addEventListener('DOMContentLoaded', async e => {
         PER_PAGE
       );
       createPetList(petListData.animals);
-      hideLoader();
       hideLoadBtn();
       TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
       checkBtnStatus();
@@ -130,7 +131,6 @@ loadMoreBtn.addEventListener('click', async event => {
 
   const itemContainer = document.querySelector('.pet-item-container');
   RECT = itemContainer.getBoundingClientRect();
-  showLoader();
   hideLoadBtn();
 
   if (ACTIVE_CATEGORY_ID === null) {
@@ -139,7 +139,6 @@ loadMoreBtn.addEventListener('click', async event => {
     loadMorePetList(petListData.animals);
 
     TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
-    hideLoader();
     checkBtnStatus();
   } else {
     const petListData = await getPetListFiltered(
@@ -149,7 +148,6 @@ loadMoreBtn.addEventListener('click', async event => {
     );
     loadMorePetList(petListData.animals);
     TOTAL_PAGES = Math.ceil(petListData.totalItems / PER_PAGE);
-    hideLoader();
     checkBtnStatus();
   }
 

@@ -40,7 +40,7 @@ function petListTemplate({
 
   return `
      <li class="pet-item-container">
-        <img src="${image}" alt="image" class="pet-img">
+        <img src="${image}" alt="image" class="pet-img" loading="lazy" />
         <p class="pet-species">${species}</p>
         <div class="pet-name-container">
           <h3 class="pet-name">${name}</h3>
@@ -54,34 +54,52 @@ function petListTemplate({
           <p class="pet-gender">${gender}</p>
         </div>
         <p class="pet-desc">${shortDescription}</p>
-        <button class="btn-more" id="js-btn-more" data-id="${_id}">Дізнатися більше</button>
       </div>
-     
+        <button class="btn-more" id="js-btn-more" data-id="${_id}">Дізнатися більше</button>
+
       
       </li>`;
 }
 
 const loader = document.querySelector('.js-preloader-pet-list');
 
+let loaderShownAt = 0;
+let hideTimeoutId = null;
+
+const MIN_VISIBLE_TIME = 1200; // лоадер минимум 1.2с
+const FADE_DURATION = 250; // CSS transition
+
 export function showLoader() {
   if (!loader) return;
 
-  loader.style.display = 'flex'; // або block
+  if (hideTimeoutId) {
+    clearTimeout(hideTimeoutId);
+    hideTimeoutId = null;
+  }
+
+  loaderShownAt = performance.now();
+  loader.classList.add('is-visible');
+
   requestAnimationFrame(() => {
-    loader.classList.add('is-visible');
+    loader.style.opacity = '0.75';
   });
 }
 
 export function hideLoader() {
   if (!loader) return;
 
-  loader.classList.remove('is-visible');
+  const elapsed = performance.now() - loaderShownAt;
+  const waitTime = Math.max(0, MIN_VISIBLE_TIME - elapsed);
 
-  setTimeout(() => {
-    loader.style.display = 'none';
-  }, 300); // має співпадати з transition у CSS
+  hideTimeoutId = setTimeout(() => {
+    loader.style.opacity = '0';
+
+    setTimeout(() => {
+      loader.classList.remove('is-visible');
+      hideTimeoutId = null;
+    }, FADE_DURATION);
+  }, waitTime);
 }
-
 //: ф-я РЕНДЕРУ розмітки Списку
 
 export function createPetList(data) {

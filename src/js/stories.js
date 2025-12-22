@@ -1,29 +1,34 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import Raty from 'raty-js';
-
+import Swal from 'sweetalert2';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import starOn from '../img/star-filled.webp';
+import starOff from '../img/star-outline.webp';
+import starHalf from '../img/star-half.webp';
+
 const API_URL = 'https://paw-hut.b.goit.study/api/feedbacks';
+
+const toast = document.querySelector('#toast-container');
+
+function showStoriesLoader() {
+  const loader = document.querySelector('.ajax-loader');
+  if (loader) {
+    loader.style.display = 'block';
+  }
+}
+function hideStoriesLoader() {
+  const loader = document.querySelector('.ajax-loader');
+  if (loader) {
+    loader.style.display = 'none';
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.getElementById('feedbacks-wrapper');
-  const loader = document.getElementById('loader');
-  const toastContainer = document.getElementById('toast-container');
-
-  if (!wrapper || !loader || !toastContainer) return;
-
-  // Функція для тостів
-  const showToast = msg => {
-    const toast = document.createElement('div');
-    toast.className = 'toast-message';
-    toast.textContent = msg;
-    toastContainer.appendChild(toast);
-    setTimeout(() => toast.remove(), 4000);
-  };
-
   // Створення карток
   const renderFeedbacks = feedbacks => {
     wrapper.innerHTML = '';
@@ -41,14 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
       wrapper.appendChild(slide);
       // renderRating(slide.querySelector('.feedback-card__rating'), rate);
     });
-    const raty = document.querySelectorAll('.star-rating').forEach(box => {
+    document.querySelectorAll('.star-rating').forEach(box => {
       const ratyBox = new Raty(box, {
         readOnly: true,
-        path: '/img',
-        starHalf: 'star-half-min.jpg',
-        // starOn: 'star-filled-min.jpg',
-        starOn: 'woman-dog-min.jpg',
-        starOff: 'star-outline-min.jpg',
+        starHalf: starHalf,
+        starOn: starOn,
+        starOff: starOff,
         numberMax: 5,
       });
       ratyBox.init();
@@ -85,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Запит до API
   const fetchFeedbacks = async () => {
-    loader.style.display = 'block';
+    showStoriesLoader();
     try {
       const res = await fetch(API_URL);
       if (!res.ok) throw new Error('Помилка завантаження відгуків');
@@ -98,9 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
       renderFeedbacks(feedbacks);
       initSwiper();
     } catch (err) {
-      showToast(err.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Помилка!',
+        text: 'Не вдалося завантажити відгуки',
+      });
     } finally {
-      loader.style.display = 'none';
+      hideStoriesLoader();
     }
   };
 

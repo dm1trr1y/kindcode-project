@@ -146,14 +146,21 @@
     bottom: auto;
   }
 }
-
+.success-stories__slider .swiper-buttons-group .swiper-button-next {
+  right: auto;
+  left: var(--swiper-navigation-sides-offset, 4px);
+}
+.success-stories__slider .swiper-buttons-group .swiper-button-prev {
+  left: auto;
+  right: var(--swiper-navigation-sides-offset, 4px);
+}
 /* Лоадер */
 
 .ajax-loader {
-  position: absolute;
-  top: 25%;
+  position: relative;
+  top: 0%;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: rotate(90deg) translate(-50%, 0);
   font-size: 50px;
   width: 1em;
   height: 3em;
@@ -163,8 +170,8 @@
 }
 
 .ajax-loader .paw {
-  width: 1em;
-  height: 1em;
+  width: 0.5em;
+  height: 0.5em;
   animation: pawAnimation 2.05s ease-in-out infinite;
   opacity: 0;
 }
@@ -214,24 +221,6 @@
   100% {
     opacity: 0;
   }
-}
-
-/* Тости */
-
-#toast-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.toast-message {
-  background: #333;
-  color: #fff;
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Адаптив */

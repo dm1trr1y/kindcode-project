@@ -1,7 +1,7 @@
 import './details-modal.js/details-mod.js';
 import { getAnimal } from './details-modal.js/details-mod.js';
 import './order-modal.js';
-import { initOrderModal } from './order-modal.js';
+import { initOrderModal, openOrderModal } from './order-modal.js';
 import './header';
 import './preloader.js';
 import {} from './pets-list/pets-index';
@@ -29,9 +29,9 @@ petList.addEventListener('click', event => {
   const id = btn.dataset.id;
   const animal = animalsMap.get(id);
 
-  if (!animal) {
-    console.warn('Animal not found:', id);
-    return;
-  }
+  // if (!animal) {
+  //   console.warn('Animal not found:', id);
+  //   return;
+  // }
   getAnimal(animal);
 });
