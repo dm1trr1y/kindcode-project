@@ -25,7 +25,7 @@
     <script type="module" crossorigin src="/kindcode-project/index.js"></script>
     <link rel="modulepreload" crossorigin href="/kindcode-project/assets/vendor-DnnAqK36.js">
     <link rel="stylesheet" crossorigin href="/kindcode-project/assets/vendor-D_KqYW_2.css">
-    <link rel="stylesheet" crossorigin href="/kindcode-project/assets/index-DGQrcMu5.css">
+    <link rel="stylesheet" crossorigin href="/kindcode-project/assets/index-DUqSskaG.css">
   </head>
   <body>
     <div class="paws-loader-box js-preloader">
@@ -156,7 +156,9 @@
     <h2 class="pet-title">Наші хвостики</h2>
     <p class="pet-sub-title">Вони дуже чекають на знайомство з вами</p>
     <ul class="pet-categories-list">
-      <a class="pet-category-btn active" data-id="all" id="all-btn">Всі</a>
+      <li>
+        <a class="pet-category-btn active" data-id="all" id="all-btn">Всі</a>
+      </li>
     </ul>
 
     <div class="pet-list-loader-overlay">
@@ -539,28 +541,29 @@
     </p>
 
     <!-- Лоадер -->
-    <div class="ajax-loader" id="loader">
-      <div class="paw">
-        <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
-      </div>
-      <div class="paw">
-        <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
-      </div>
-      <div class="paw">
-        <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
-      </div>
-      <div class="paw">
-        <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
-      </div>
-      <div class="paw">
-        <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
-      </div>
-      <div class="paw">
-        <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
-      </div>
-    </div>
+
     <!-- Слайдер -->
     <div class="success-stories__slider swiper">
+      <div class="ajax-loader" id="loader">
+        <div class="paw">
+          <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
+        </div>
+        <div class="paw">
+          <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
+        </div>
+        <div class="paw">
+          <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
+        </div>
+        <div class="paw">
+          <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
+        </div>
+        <div class="paw">
+          <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
+        </div>
+        <div class="paw">
+          <svg class="icon"><use href="/kindcode-project/assets/icon-sprite-B_M_NXoB.svg#paw" /></svg>
+        </div>
+      </div>
       <div class="swiper-wrapper" id="feedbacks-wrapper"></div>
       <div class="swiper-controls">
         <div class="swiper-buttons-group">
@@ -626,27 +629,49 @@
       <!-- Name -->
       <div class="order-container-inputs">
         <label class="order-form-label" for="order-user-name">Ім’я*</label>
-        <input type="text" class="order-user-name" id="order-user-name" name="order-user-name" placeholder="Андрій"
-          required maxlength="32" />
+        <input
+          type="text"
+          class="order-user-name"
+          id="order-user-name"
+          name="order-user-name"
+          placeholder="Андрій"
+          maxlength="32"
+        />
+        <span class="error-name-msg-box"></span>
       </div>
       <!-- Phone -->
       <div class="order-container-inputs">
         <label class="order-form-label" for="order-user-phone">Телефон*</label>
-        <input type="tel" class="order-user-name" id="order-user-phone" name="order-user-phone"
-          placeholder="+38 (095) 555 99 22" required inputmode="numeric" pattern="^[0-9]{12}$"
-          title="Введіть 12 цифр без пробілів та знаків (наприклад: 380961234568)" />
+        <input
+          type="tel"
+          class="order-user-name"
+          id="order-user-phone"
+          name="order-user-phone"
+          placeholder="+38 (095) 555 99 22"
+          inputmode="numeric"
+        />
+        <span class="error-number-msg-box"></span>
       </div>
       <!-- Comment-->
       <div class="order-container-textarea">
-        <label class="order-form-label" for="order-user-comment">Коментар</label>
-        <textarea class="order-user-comment" id="order-user-comment" name="order-user-comment" rows="7"
-          placeholder="Напишіть ваш коментар" maxlength="500"></textarea>
+        <label class="order-form-label" for="order-user-comment"
+          >Коментар</label
+        >
+        <textarea
+          class="order-user-comment"
+          id="order-user-comment"
+          name="order-user-comment"
+          rows="7"
+          placeholder="Напишіть ваш коментар"
+        ></textarea>
+        <span class="error-comment-msg-box"></span>
       </div>
       <!-- Button -->
       <button class="order-feedback-btn" type="submit">Надіслати</button>
     </form>
   </div>
 </div>
+
     </main>
     <footer class="footer" id="footer">
   <div class="container footer-container">
