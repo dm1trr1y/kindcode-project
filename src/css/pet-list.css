@@ -254,7 +254,7 @@
 }
 .pet-paws-loader-box {
   /* прихований за замовчуванням */
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;

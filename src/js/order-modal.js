@@ -8,6 +8,9 @@ const refs = {
   modal: document.querySelector('.order-modal'),
   closeBtn: document.querySelector('.order-close-modal-btn'),
   form: document.querySelector('.order-form'),
+  errorNameBox: document.querySelector('.error-name-msg-box'),
+  errorNumberBox: document.querySelector('.error-number-msg-box'),
+  errorCommentBox: document.querySelector('.error-comment-msg-box'),
 };
 
 let currentPetId = null;
@@ -37,6 +40,9 @@ export function closeOrderModal() {
   refs.backdrop.classList.remove('is-open');
   unlockScroll();
   refs.form.reset();
+  refs.errorCommentBox.innerHTML = '';
+  refs.errorNameBox.innerHTML = '';
+  refs.errorNumberBox.innerHTML = '';
   currentPetId = null;
 }
 
@@ -56,52 +62,56 @@ async function onSubmit(e) {
   const rawPhone = refs.form.elements['order-user-phone']?.value.trim();
   const phone = rawPhone.replace(/\D/g, '');
   const comment = refs.form.elements['order-user-comment']?.value.trim() || '';
+  let isValid = true;
 
-  if (!name || !rawPhone) {
-    return;
+  if (!name) {
+    refs.errorNameBox.innerHTML = 'Будь ласка, введіть ваше імʼя.';
+    isValid = false;
+  } else {
+    refs.errorNameBox.innerHTML = '';
   }
 
   if (name.length > 32) {
-    Swal.fire({
-      icon: 'warning',
-      title: "Ім'я занадто довге",
-      text: 'Макс. 32 символи.',
-    });
-    return;
+    refs.errorNameBox.innerHTML = 'Імʼя занадто довге. Макс. 32 символи.';
+    isValid = false;
+  } else {
+    refs.errorNameBox.innerHTML = '';
   }
 
   if (comment.length > 500) {
-    Swal.fire({
-      icon: 'warning',
-      title: 'Коментар занадто довгий',
-      text: 'Макс. 500 символів.',
-    });
-    return;
+    refs.errorCommentBox.innerHTML =
+      'Коментар занадто довгий. Макс. 500 символів.';
+    isValid = false;
+  } else {
+    refs.errorCommentBox.innerHTML = '';
+  }
+  if (!phone) {
+    refs.errorNumberBox.innerHTML = 'Будь ласка, введіть ваш номер телефону.';
+    isValid = false;
+  } else {
+    refs.errorNumberBox.innerHTML = '';
   }
 
-  if (!/^\d{12}$/.test(phone)) {
-    Swal.fire({
-      icon: 'warning',
-      title: 'Невірний телефон',
-      text: 'Введіть 12 цифр (наприклад: 380961234568). Без +, дужок і пробілів.',
-    });
-    return;
+  if (!/^[0-9]{12}$/.test(phone)) {
+    refs.errorNumberBox.innerHTML =
+      'Невірний номер телефону. Введіть номер у форматі +380961234568.';
+    isValid = false;
+  } else {
+    refs.errorNumberBox.innerHTML = '';
   }
 
-  if (!name || !phone) {
-    Swal.fire({
-      icon: 'warning',
-      title: 'Заповніть обов’язкові поля',
-      text: "Поля Ім'я та Телефон є обов'язковими.",
-    });
-    return;
+  if (!name && !phone) {
+    refs.errorNameBox.innerHTML = 'Будь ласка, заповніть всі обовʼязкові поля.';
+    refs.errorNumberBox.innerHTML =
+      'Будь ласка, заповніть всі обовʼязкові поля.';
+    isValid = false;
   }
 
   if (!currentPetId) {
     Swal.fire({
       icon: 'error',
       title: 'Немає id тваринки',
-      text: 'Немає id тваринки',
+      text: 'Немає id тваринки яке передається з модального вікна.',
     });
     return;
   }
@@ -112,16 +122,9 @@ async function onSubmit(e) {
     comment,
     animalId: currentPetId,
   };
-
-  if (!/^[0-9]{12}$/.test(phone)) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Невірний номер телефону',
-      text: 'Введіть номер у форматі 380XXXXXXXXX',
-    });
+  if (!isValid) {
     return;
   }
-
   try {
     const res = await fetch(`${API_BASE}/orders`, {
       method: 'POST',

@@ -157,10 +157,10 @@
 /* Лоадер */
 
 .ajax-loader {
-  position: absolute;
-  top: 25%;
+  position: relative;
+  top: 0%;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: rotate(90deg) translate(-50%, 0);
   font-size: 50px;
   width: 1em;
   height: 3em;
@@ -170,8 +170,8 @@
 }
 
 .ajax-loader .paw {
-  width: 1em;
-  height: 1em;
+  width: 0.5em;
+  height: 0.5em;
   animation: pawAnimation 2.05s ease-in-out infinite;
   opacity: 0;
 }

@@ -14,6 +14,19 @@ const API_URL = 'https://paw-hut.b.goit.study/api/feedbacks';
 
 const toast = document.querySelector('#toast-container');
 
+function showStoriesLoader() {
+  const loader = document.querySelector('.ajax-loader');
+  if (loader) {
+    loader.style.display = 'block';
+  }
+}
+function hideStoriesLoader() {
+  const loader = document.querySelector('.ajax-loader');
+  if (loader) {
+    loader.style.display = 'none';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.getElementById('feedbacks-wrapper');
   const loader = document.getElementById('loader');
@@ -80,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Запит до API
   const fetchFeedbacks = async () => {
-    loader.style.display = 'block';
+    showStoriesLoader();
     try {
       const res = await fetch(API_URL);
       if (!res.ok) throw new Error('Помилка завантаження відгуків');
@@ -99,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         text: 'Не вдалося завантажити відгуки',
       });
     } finally {
-      loader.style.display = 'none';
+      hideStoriesLoader();
     }
   };
 
