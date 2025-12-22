@@ -6,9 +6,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import starOn from '../img/star-filled-min.jpg';
-import starOff from '../img/star-outline-min.jpg';
-import starHalf from '../img/star-half-min.jpg';
+import starOn from '../img/star-filled.webp';
+import starOff from '../img/star-outline.webp';
+import starHalf from '../img/star-half.webp';
 
 const API_URL = 'https://paw-hut.b.goit.study/api/feedbacks';
 
@@ -29,11 +29,6 @@ function hideStoriesLoader() {
 
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.getElementById('feedbacks-wrapper');
-  const loader = document.getElementById('loader');
-  const toastContainer = document.getElementById('toast-container');
-
-  if (!wrapper || !loader || !toastContainer) return;
-
   // Створення карток
   const renderFeedbacks = feedbacks => {
     wrapper.innerHTML = '';
