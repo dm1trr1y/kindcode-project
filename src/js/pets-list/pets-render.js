@@ -81,7 +81,7 @@ export function showLoader() {
   loader.classList.add('is-visible');
 
   requestAnimationFrame(() => {
-    loader.style.opacity = '1';
+    loader.style.opacity = '0.75';
   });
 }
 
