@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
 
 const API_BASE = 'https://paw-hut.b.goit.study/api';
 
